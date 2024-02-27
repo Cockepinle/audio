@@ -1,0 +1,89 @@
+﻿<Window x:Class="AudioPlayerr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioPlayerr"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="open" Content="Открыть папку с музыкой" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="50" Click="open_Click" Foreground="#FF100467" FontSize="16" BorderBrush="#FF929292">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="history" Content="История прослушивания" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="50" BorderBrush="#FF737373" FontSize="16" Foreground="#FF100467" Click="history_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="back" Content="Назад" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Height="50" FontSize="16" Foreground="#FF100467" Click="back_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="play" Content="Пауза" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Height="50" FontSize="16" Foreground="#FF100467" Click="play_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="forward" Content="Вперед" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" Height="50" FontSize="16" Foreground="#FF100467" Click="forward_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="repeat" Content="Повтор" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Height="50" FontSize="16" Foreground="#FF100467" Click="repeat_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="random" Content="Случайно" Grid.Row="6" Grid.Column="4" VerticalAlignment="Center" Height="50" FontSize="16" Foreground="#FF100467"  Click="random_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <MediaElement x:Name="mediaElement" Source="ms-appx:///music.mp3" LoadedBehavior="Manual" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="6"  VerticalAlignment="Stretch" MediaOpened="mediaElement_MediaOpened"/>
+        <ListBox x:Name="listBox" VerticalAlignment="Stretch" SelectionChanged="listBox_SelectionChanged" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="6"/>
+        <Slider x:Name="slider" Grid.Row="4" Grid.ColumnSpan="6" VerticalAlignment="Center" BorderBrush="#FF9B0505" Foreground="#FF140476" ValueChanged="slider_ValueChanged"/>
+        <Slider x:Name="slidersound" Grid.Row="5" Grid.Column="6" VerticalAlignment="Center" Foreground="#FF100467" BorderBrush="#FF890606" ValueChanged="slidersound_ValueChanged"/>
+        <TextBlock x:Name="nachaloTimeTextBlock" Text="{Binding ElementName=mediaElement, Path=Position, StringFormat={}{mm':'ss}}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="endTimeTextBlock" Text="{Binding ElementName=mediaElement, Path=NaturalDuration.TimeSpan, StringFormat={}{mm':'ss}}" Grid.Row="4" Grid.Column="7" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
